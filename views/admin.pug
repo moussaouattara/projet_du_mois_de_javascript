@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	.jumbotron
+		h1.display-4 Bienvenue sur votre espace d'administration
+		p.lead Vous pouvez ajouter des nourritures à l'aide du formulaire ci-dessous
+	.card
+		.card-body
+			form(action="/admin/ajouter-un-produit", method="POST")
+				.form-group
+					label(for="name") Nom :
+					input(type="text", name="name", id="name").form-control
+				.form-group
+					label(for="description") Description :
+					input(type="text", name="description", id="description").form-control
+				.form-group
+					label(for="image") Image :
+					input(type="text", name="image", id="image").form-control
+				.form-group
+					label(for="price") Prix :
+					input(type="text", name="price", id="price").form-control
+				button(type="submit").btn.btn-primary Ajouter
