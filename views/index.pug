@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	.jumbotron
+		h1.display-4 Bienvenue
+		p.lead Ci-dessous, les nourritures actuellement disponible:
+	.row
+		each product in products
+			.col-sm-6.col-md-4
+				.card
+					img(src=product.image, alt=product.name).card-img-top
+					.card-body
+						h3.card-title= product.name
+						h5
+							| Prix: 
+							span.badge.badge-pill.badge-dark #{product.price}€ 
+						hr
+						.d-flex
+							a(href="/produit/"+product.id).btn.btn-outline-dark.btn-sm.mr-2 Voir le produit
+							form(action="/ajouter-au-panier", method="POST")
+								input(type="hidden", name="productId", value=product.id)
+								button(type="submit").btn.btn-outline-dark.btn-sm ajouter au panier
